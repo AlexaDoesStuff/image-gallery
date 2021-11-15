@@ -1,0 +1,31 @@
+.gallery {
+  margin-top: 2em;
+  flex-direction: column;
+  font-family: "Adobe Garamond Pro";
+  h1 {
+    font-size: 34pt;
+    font-weight: bold;
+  }
+  input#search {
+    width: 70vw;
+    max-width: 500px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  .display {
+    display: inline;
+  }
+  .line {
+    border-bottom: 1px solid black;
+    height: 1px;
+    max-width: 100%;
+    margin-top: 2em;
+  }
+}
+
+.rendered {
+  margin: 2em;
+  max-width: 900px;
+}
