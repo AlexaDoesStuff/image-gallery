@@ -1,11 +1,35 @@
+@font-face {
+  font-family: 'GT America Standard';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff')
+      format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/GT-America-Standard-Regular.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'Ivar Headline';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff') format('woff'),
+    url('https://static.ithaka.org/pharos/assets/fonts/IvarHeadline-Regular.woff2') format('woff2');
+}
+
 .gallery {
   // max-width: 1220px;
   margin-top: 2em;
   flex-direction: column;
-  font-family: "Adobe Garamond Pro";
+  font-family: "GT America Standard";
   h1 {
-    font-size: 34pt;
+    font-size: 42pt;
     font-weight: bold;
+    font-family: 'Ivar Headline';
+  }
+  input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
   }
   input#search {
     width: 70vw;

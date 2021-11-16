@@ -1,3 +1,30 @@
+/* imageRender.js
+* This component, from the filtered or unfiltered photo array, generates the thumbnails and 
+* modals for each picture. 
+*  
+* Props: displayed (func), photos (arr), curPage (num), pages (num)
+*
+* Functions:
+*
+*   getImages() 
+*   params: curPage, imgNo (num)
+*   return: Dependent on the current page you are on, renders images to display (default 8). 
+*           So let's say you're on the second page w/ ea/ pg w 8 imgs, then it'll render imgs 9-17 (math lol)
+*
+*   getDisplay() 
+*   params: 
+*   return: A callback function that passes the number of displayed images relevant to curPage and imgNo
+*           to the gallery component for display.
+*
+*   useEffect() x 2
+*   params: props.pages and curPage (num)
+*   return: the first useEffect [props.pages] triggers whenever an image search occurs, setting the 
+*           start page back to zero
+*           the second useEffect [curPage] is the function that renders the correct img range dependent 
+*           on your current page, which is inc/dec by arrows 
+*
+*/
+
 import { useState, useEffect } from 'react';
 
 import Thumbnail from './thumbnail.js';
@@ -23,8 +50,6 @@ function ImageRender(props) {
     }
     return x;
   }
-  
-  console.log(props.pages);
 
   const getDisplay = () => {
     const total = props.pages;

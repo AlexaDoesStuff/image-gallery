@@ -1,3 +1,28 @@
+/* imageRender.js
+* Modal component for clicking on thumbnail req.
+* Note that the requirement to mutate JSON values requires backend, which is not implemented in this exercise.
+* So, I used local storage instead, where saving a change to textareas etc are saved over and retrv'd from local
+*  
+* Props: photo array from data.json (refer to public/data.json for all key vals)
+*
+* Functions:
+*
+*   reset() 
+*   params: 
+*   return: Dependent on the current page you are on, renders images to display (default 8). 
+*           So let's say you're on the second page w/ ea/ pg w 8 imgs, then it'll render imgs 9-17 (math lol)
+*
+*   changeLocally() 
+*   params: 
+*   return: Function that sets the local storage item title and desc to new input from user on click save
+*
+*   useEffect()
+*   params: props
+*   return: on mount, set local title/desc states to the props.info title and desc but from local (redundant..?)
+*
+*/
+
+
 import { useRef, useEffect, useState } from 'react';
 
 function ImageModal(props) {
