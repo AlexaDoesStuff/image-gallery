@@ -25,7 +25,24 @@
   }
 }
 
-.rendered {
+.images {
   margin: 2em;
+}
+
+.rendered {
+  margin: 0 auto;
   max-width: 900px;
+  min-height: 500px;
+  flex-wrap: wrap;
+  justify-content: center;
+  .url {
+    height: 150px;
+    background-size: cover;
+    margin: 1em;
+    background-color: darkgray;
+  }
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+  }
 }

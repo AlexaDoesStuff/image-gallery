@@ -16,18 +16,18 @@ const ImageGallery = () => {
     })
     .then( data => setPhotos(data.photos));
   }, [keywords]);
-  
+
   return(
     <div className="container gallery d-flex">
       <h1>Image Gallery</h1>
       <div className="search">
         <label>Search: </label>
         <input type="text" id="search" value={keywords} onChange={e => setKeywords(e.target.value)} />
-        <div className="display">Displaying x of total images</div>
+        <div className="display">Displaying x of {photos ? photos.photo.length : ''}</div>
       </div>
       <div className="line"></div>
       <div className="images">
-        <ImageRender photos={photos}/>
+        {photos ? <ImageRender photos={photos} keyword={keywords} /> : ''}
       </div>
     </div>
   );
