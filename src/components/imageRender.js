@@ -11,8 +11,6 @@ function ImageRender(props) {
   const [curPage, setCurPage] = useState(props.curPage);
   const [images, setImages] = useState();
 
-  console.log(curPage);
-
   const imgArray = props.photos;
 
   const getImages = (curPage, imgNo) => {
@@ -25,17 +23,30 @@ function ImageRender(props) {
     }
     return x;
   }
+  
+  console.log(props.pages);
+
+  const getDisplay = () => {
+    const total = props.pages;
+    var num;
+    if(total < 8) {
+      num = total;
+    } else if (total > 8) {
+      if(curPage == pages - 1) { num = props.pages }
+      else { num = (curPage + 1) * 8 }
+    }
+    props.displayed(num)
+  }
 
   useEffect(() => {
     setCurPage(0);
     setImages(getImages(0, imgNo));
+    getDisplay();
   }, [props.pages]);
 
   useEffect(() => {
-    if(curPage > pages) {
-      setCurPage(0);
-    } 
     setImages(getImages(curPage, imgNo));
+    getDisplay();
   }, [curPage]);
 
   return (  

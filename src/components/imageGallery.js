@@ -10,6 +10,12 @@ function ImageGallery() {
 
   const [page, setPage] = useState(0);
 
+  const [noDisplay, setNoDisplay] = useState(0);
+
+  const getDisplayedNo = ( numb ) => {
+    setNoDisplay(numb)
+  }
+
   const filterArray = (keywords) => {
     setPage(0);
     fetch('data.json')
@@ -42,11 +48,11 @@ function ImageGallery() {
         <button className="btn btn-link " onClick={() => filterArray(keywords)}>
           &#x1F50E;
         </button>
-        <div className="display">Displaying x of {photos ? photos.length : ''}</div>
+        <div className="display">Displaying {noDisplay} of {photos ? photos.length : ''}</div>
       </div>
       <div className="line"></div>
       <div className="images">
-        {photos ? <ImageRender photos={photos} curPage={page} pages={photos.length}/> : ''}
+        {photos ? <ImageRender displayed={getDisplayedNo} photos={photos} curPage={page} pages={photos.length}/> : ''}
       </div>
     </div>
   );
