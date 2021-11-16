@@ -3,6 +3,8 @@ Responsive image gallery with auto search indexing.
 
 Repository for Alexa Javellana's Technical Exercise: Image Gallery
 
+Static render 11/16 https://affectionate-wozniak-f40a35.netlify.app/
+
 ## Project Requirements
 
 Image Gallery Page
