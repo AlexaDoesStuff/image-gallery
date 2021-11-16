@@ -12,7 +12,7 @@ function Thumbnail(props) {
   }
 
   return (
-    <div className="thumbnail col-3 p-0">
+    <div className="thumbnail col col-md-3 p-0">
       <button className="unstyle"
         onClick={() => setDisplay(!display)}  
       >

@@ -42,18 +42,28 @@ function ImageGallery() {
   return(
     <div className="container gallery d-flex">
       <h1>Image Gallery</h1>
+      
       <div className="search">
         <label>Search: </label>
-        <input type="text" id="search" value={keywords} onChange={e => setKeywords(e.target.value)} />
+        <input type="text" 
+          id="search" 
+          value={keywords} 
+          onChange={e => setKeywords(e.target.value)} 
+        />
+
         <button className="btn btn-link " onClick={() => filterArray(keywords)}>
           &#x1F50E;
         </button>
+
         <div className="display">Displaying {noDisplay} of {photos ? photos.length : ''}</div>
       </div>
+
       <div className="line"></div>
+
       <div className="images">
         {photos ? <ImageRender displayed={getDisplayedNo} photos={photos} curPage={page} pages={photos.length}/> : ''}
       </div>
+      
     </div>
   );
 }

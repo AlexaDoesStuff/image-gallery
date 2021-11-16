@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
 function ImageModal(props) {
-  const [display, setDisplay] = useState(false);
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
-  const modalRef = useRef(null);
 
   const reset = () => {
     setTitle(props.info.title);
@@ -28,11 +26,17 @@ function ImageModal(props) {
       </div>
       <div className="row editor">
         <label>Description: </label>
-        <input type="text" id="description" value={desc} onChange={e => setDesc(e.target.value)} />
+        <textarea id="description" value={desc} onChange={e => setDesc(e.target.value)} />
       </div>
     </div>
-    <div className="statics">
-
+    <div className="statics ml-3">
+      <div className="row m-0">
+        <label>Public Domain: </label>
+        { props.info.ispublic ? <input type="checkbox" id="public" name="public" checked disabled/> :  <input type="checkbox" id="public" name="public" checked disabled /> } 
+      </div>
+      <label>ID: </label> {props.info.id}
+      <label>Owner Name: </label> {props.info.ownername}
+      <label>Dimensions: </label> {props.info.width_m} x {props.info.height_m}
     </div>
     <div className="line"></div>
     <div className="edit-buttons m-2">
