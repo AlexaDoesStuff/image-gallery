@@ -1,18 +1,48 @@
 import { useRef, useEffect, useState } from 'react';
 
 function ImageModal(props) {
-  const [title, setTitle] = useState();
-  const [desc, setDesc] = useState();
+  const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
+
+  var localInfo = localStorage.getItem(props.info.id);
+  
+  if(localInfo == null) {
+    localStorage.setItem(props.info.id, JSON.stringify({
+      title: props.info.title,
+      desc: props.info.description._content
+    }));
+  }
 
   const reset = () => {
-    setTitle(props.info.title);
-    setDesc(props.info.description._content);
+    if(localInfo) {
+      var json = JSON.parse(localStorage.getItem(props.info.id));
+      setTitle(json.title);
+      setDesc(json.desc);
+    } else {
+      setTitle(props.info.title);
+      setDesc(props.info.description._content);
+    }
     props.close();
   }
 
+  const changeLocally = () => {
+    localStorage.setItem(props.info.id, JSON.stringify({
+      title: title,
+      desc: desc
+    }));
+
+    props.close();
+
+    var newJson = JSON.parse(localStorage.getItem(props.info.id));
+    if(newJson.title == title && newJson.desc == desc) {
+      alert('Changes saved!');
+    }
+  }
+
   useEffect(() => {
-    setTitle(props.info.title);
-    setDesc(props.info.description._content);
+    var json = JSON.parse(localStorage.getItem(props.info.id));
+    setTitle(json.title);
+    setDesc(json.desc);
   }, [props])
 
   return (
@@ -41,7 +71,7 @@ function ImageModal(props) {
     <div className="line"></div>
     <div className="edit-buttons m-2">
       <button onClick={() => reset()}>Cancel</button>
-      <button>Save</button>
+      <button onClick={() => changeLocally()}>Save</button>
     </div>
   </>
   )
