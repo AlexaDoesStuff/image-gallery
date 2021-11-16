@@ -4,9 +4,15 @@ import ImageRender from './imageRender.js';
 
 import "./components.scss";
 
-const ImageGallery = () => {
+function ImageGallery() {
   const [keywords, setKeywords] = useState('');
   const [photos, setPhotos] = useState(null);
+
+  const [page, setPage] = useState(0);
+
+  const getPage = (pg) => {
+    setPage(pg);
+  }
 
   useEffect(() => {
     fetch('data.json')
@@ -14,7 +20,11 @@ const ImageGallery = () => {
       if (!res.ok) throw new Error();
         else return res.json();
     })
-    .then( data => setPhotos(data.photos));
+    .then(data => {
+      setPhotos(data.photos.photo.filter((el) => {
+        return el.description._content.toLowerCase().includes(keywords.toLowerCase()) || el.title.toLowerCase().includes(keywords.toLowerCase());
+      }));
+    });
   }, [keywords]);
 
   return(
@@ -23,14 +33,26 @@ const ImageGallery = () => {
       <div className="search">
         <label>Search: </label>
         <input type="text" id="search" value={keywords} onChange={e => setKeywords(e.target.value)} />
-        <div className="display">Displaying x of {photos ? photos.photo.length : ''}</div>
+        {/* <button className="btn btn-link ">
+          &#x1F50E;
+        </button> */}
+        <div className="display">Displaying x of {photos ? photos.length : ''}</div>
       </div>
       <div className="line"></div>
       <div className="images">
-        {photos ? <ImageRender photos={photos} keyword={keywords} /> : ''}
+        {photos ? <ImageRender passPage={getPage} photos={photos} curPage={page} pages={photos.length}/> : ''}
       </div>
     </div>
   );
 }
 
 export default ImageGallery;
+
+
+// const displayNo = ( page ) => {
+//   if(photos.length < 8) {
+//     setDisplay(photos.length);
+//   } else {
+//     setDisplay((page + 1) * 8);
+//   }
+// } 

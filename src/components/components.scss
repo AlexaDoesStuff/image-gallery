@@ -41,8 +41,47 @@
     margin: 1em;
     background-color: darkgray;
   }
+  button.unstyle {
+    border: unset;
+    background: unset;
+    margin: 0;
+    padding: 0;
+  }
   .thumbnail {
     display: flex;
     flex-direction: column;
+    .modal {
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
+    }
+    .close {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      max-width: 30px;
+    }
+  }
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  min-height: 500px;
+  .editables {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    max-width: 80%;
+  }
+  .editor {
+    margin: 1em;
+  }
+  input#description {
+    min-width: 400px;
+    min-height: 100px;
   }
 }
