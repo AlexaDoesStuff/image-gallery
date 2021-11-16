@@ -10,11 +10,8 @@ function ImageGallery() {
 
   const [page, setPage] = useState(0);
 
-  const getPage = (pg) => {
-    setPage(pg);
-  }
-
-  useEffect(() => {
+  const filterArray = (keywords) => {
+    setPage(0);
     fetch('data.json')
     .then((res) => { 
       if (!res.ok) throw new Error();
@@ -25,7 +22,16 @@ function ImageGallery() {
         return el.description._content.toLowerCase().includes(keywords.toLowerCase()) || el.title.toLowerCase().includes(keywords.toLowerCase());
       }));
     });
-  }, [keywords]);
+  }
+
+  useEffect(() => {
+    fetch('data.json')
+    .then((res) => { 
+      if (!res.ok) throw new Error();
+        else return res.json();
+    })
+    .then(data => setPhotos(data.photos.photo))
+  }, []);
 
   return(
     <div className="container gallery d-flex">
@@ -33,26 +39,17 @@ function ImageGallery() {
       <div className="search">
         <label>Search: </label>
         <input type="text" id="search" value={keywords} onChange={e => setKeywords(e.target.value)} />
-        {/* <button className="btn btn-link ">
+        <button className="btn btn-link " onClick={() => filterArray(keywords)}>
           &#x1F50E;
-        </button> */}
+        </button>
         <div className="display">Displaying x of {photos ? photos.length : ''}</div>
       </div>
       <div className="line"></div>
       <div className="images">
-        {photos ? <ImageRender passPage={getPage} photos={photos} curPage={page} pages={photos.length}/> : ''}
+        {photos ? <ImageRender photos={photos} curPage={page} pages={photos.length}/> : ''}
       </div>
     </div>
   );
 }
 
 export default ImageGallery;
-
-
-// const displayNo = ( page ) => {
-//   if(photos.length < 8) {
-//     setDisplay(photos.length);
-//   } else {
-//     setDisplay((page + 1) * 8);
-//   }
-// } 

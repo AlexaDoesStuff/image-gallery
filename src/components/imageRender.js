@@ -11,6 +11,8 @@ function ImageRender(props) {
   const [curPage, setCurPage] = useState(props.curPage);
   const [images, setImages] = useState();
 
+  console.log(curPage);
+
   const imgArray = props.photos;
 
   const getImages = (curPage, imgNo) => {
@@ -24,17 +26,17 @@ function ImageRender(props) {
     return x;
   }
 
-  const passPage = () => {
-    props.passPage(curPage)
-  }
+  useEffect(() => {
+    setCurPage(0);
+    setImages(getImages(0, imgNo));
+  }, [props.pages]);
 
   useEffect(() => {
     if(curPage > pages) {
       setCurPage(0);
-    }
+    } 
     setImages(getImages(curPage, imgNo));
-    passPage();
-  }, [curPage, props.pages]);
+  }, [curPage]);
 
   return (  
     <>
@@ -45,10 +47,19 @@ function ImageRender(props) {
       </div>
       <div className="arrows m-4">
         <button onClick={() => setCurPage(0)}>&#171;</button>
-        {curPage == 0 ? <button disabled>&#8249;</button> : <button onClick={() => setCurPage(curPage - 1)}>&#8249;</button>}
+        {curPage == 0 ? 
+          <button disabled>&#8249;</button> : <button onClick={() => setCurPage(curPage - 1)}>
+            &#8249;
+          </button>}
         <span> {curPage + 1} of {pages} </span>
-        {curPage == pages - 1 ? <button disabled>&#8250;</button> : <button onClick={() => setCurPage(curPage + 1)}>&#8250;</button>}
-        <button onClick={() => setCurPage(pages - 1)}>&#187;</button>
+        {curPage == pages - 1 ? 
+          <button disabled>&#8250;</button> : <button onClick={() => setCurPage(curPage + 1)}>
+            &#8250;
+          </button>}
+        <button 
+          onClick={() => setCurPage(pages - 1)}>
+            &#187;
+        </button>
       </div>
     </>
   );
