@@ -48,3 +48,6 @@ This means that the code committed under this commit is code that relates to the
   - Total images are less than the minimum 8 
   - Range must be calculated if there are eight images or more 
 
+## Unit Testing
+Jest + Enzyme 
+Minimum of two simple tests to check default behaviors
