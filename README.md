@@ -1,7 +1,7 @@
-# Ithaka
-Ithaka Exercise
+# Technical Exercise: Image Gallery
+Responsive image gallery with auto search indexing.
 
-Repository for Alexa Javellana's Ithaka Technical Exercise 
+Repository for Alexa Javellana's Technical Exercise: Image Gallery
 
 ## Project Requirements
 
@@ -38,4 +38,13 @@ Where ## will correspond from a number 00 - 07, where numbers 01 - 06 correspond
 ITH-O1 | feat : html formatting, change value behavior linked to input 
 ```
 This means that the code committed under this commit is code that relates to the **Search Capabilities** task, where a new feature was added that probably has something to do with HTML formatting and change values. 
+
+## Current Bugs/Findings 
+- Auto indexing from keywords in input will cause multiple cases to be implemented
+  - If the current page of the current search exceeds the total pages for a new search automatically captured, the page must reset to 0 
+  - The page must reset to 0 on any new search 
+- Pages are automatically created on basis that at all times 8 imgs maximum will be shown on each page
+- The **displaying images** section on the top right corner must account for cases when
+  - Total images are less than the minimum 8 
+  - Range must be calculated if there are eight images or more 
 
