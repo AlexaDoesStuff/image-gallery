@@ -94,6 +94,12 @@ function ImageGallery() {
 
       <div className="line"></div>
 
+      {/* This would be an additional feature; select the total amount of imgs shown on ea pg
+      <div className="page-selectors">
+        4 | 8 | 10
+      </div> 
+      */}
+
       <div className="images">
         <div className="no-display" style={{display: (empty ? 'block' : 'none')}}>
           No images found!

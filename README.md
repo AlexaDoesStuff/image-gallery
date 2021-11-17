@@ -5,6 +5,18 @@ Repository for Alexa Javellana's Technical Exercise: Image Gallery
 
 Static render 11/16 https://affectionate-wozniak-f40a35.netlify.app/
 
+## Developer Notes
+**Note on editable fields:**
+This project does not contain a backend that manipulates the static json whenever
+you edit a image title and description (other fields display are not editable). Instead,
+it uses localStorage to persist and illustrate theoretical usage.
+
+**Additional Features**
+Some mobile styling, modal closing behaviors, option to either have auto search or button
+triggerd search.
+Choose # of imgs on ea pg not implemented, but would be good to implement (commented out).
+Grey box appears if image link does not return image. 
+
 ## Project Requirements
 
 Image Gallery Page

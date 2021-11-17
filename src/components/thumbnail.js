@@ -12,18 +12,31 @@
 */
 
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import './components.scss';
 
 import ImageModal from './imageModal.js';
 
 function Thumbnail(props) {
+  const ref = useRef();
   const [display, setDisplay] = useState(false);
 
   const closeModal = () => {
     setDisplay(false);
   }
+
+  useEffect(() => {
+    const clickOut = e => {
+      if (display && ref.current && !ref.current.contains(e.target)) {
+        setDisplay(false)
+      }
+    }
+    document.addEventListener("mousedown", clickOut)
+    return () => {
+      document.removeEventListener("mousedown", clickOut)
+    }
+  }, [display])
 
   return (
     <div className="thumbnail col col-md-3 p-0">
@@ -40,7 +53,7 @@ function Thumbnail(props) {
       <div className={`modal ${props.image.id}`} 
         style={{display: (display ? 'block' : 'none')}}
       >
-        <div className="modal-content">
+        <div className="modal-content" ref={ref}>
           <button className="close"
             onClick={() => setDisplay(false)}>
             &times;
