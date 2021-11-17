@@ -89,7 +89,7 @@ function ImageGallery() {
           &#x1F50E;
         </button>
 
-        <div className="display">Displaying {noDisplay} of {photos ? photos.length : ''}</div>
+        <div className="display">Displaying <span id="nodisplay">{noDisplay}</span> of <span className="total">{photos ? photos.length : ''}</span></div>
       </div>
 
       <div className="line"></div>

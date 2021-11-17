@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if renders correctly on init should render 1`] = `ShallowWrapper {}`;
+
+exports[`Check if renders correctly should render 1`] = `ShallowWrapper {}`;
+
+exports[`Check if renders photo array in Image Gallery should render button 1`] = `ShallowWrapper {}`;
+
+exports[`Check if with json, nodisplay and totals are set #nodisplay and #total should have components 1`] = `ShallowWrapper {}`;
